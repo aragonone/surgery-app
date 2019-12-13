@@ -8,10 +8,10 @@ const {
 } = require('./encoding')
 const { encodeAddressForStorage } = require('./util')
 
-const PACIENT_KERNEL = '0xa50AF873EAbD7a9F6240CBFAF24B3Bf9ef71d7b2'
-const PACIENT_ADDR = '0x474af2160eebcb1ec15dcda8de9f36af77f2add0'
+const PACIENT_KERNEL = '0x08ac31Dd93c16F1f6c4A0FAE540bA1aD52f581d0'
+const PACIENT_ADDR = '0xf739c4d15854cab9874e24a4d1ec084dcaf1f13f'
 const EDIT_SLOT = 0
-const EDIT_VALUE = encodeAddressForStorage('0xa2e9a824339d56ba7310f739dd2646bab1461b3a')
+const EDIT_VALUE = encodeAddressForStorage('0x50c4b18022d6e3d9f6835012cfca780bf97714ee')
 
 const PACIENT_APP_ID = namehash('finance.aragonpm.eth')
 const SURGERY_APP_ID = namehash('surgery.open.aragonpm.eth')
@@ -29,8 +29,8 @@ const generateSurgeryScript = (
   editValue = EDIT_VALUE
 ) => {
   // TODO: could be fecthed from apm
-  const pacientAppBase = '0x94D3013A8700E8B168f66529aD143590CC6b259d'
-  const surgeryAppBase = '0xA4EC80B7F8DE7fE28c25F2A2218a54e896eA62f9'
+  const pacientAppBase = '0x836835289a2e81b66ae5d95b7c8dbc0480dcf9da'
+  const surgeryAppBase = '0x3a8bFd0978a35E41Ee5364EB4298aa0E5268F0cd'
   const actions = [
     {
       to: pacientKernel,
