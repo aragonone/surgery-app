@@ -5,18 +5,18 @@ const { getEventArgument } = require('@aragon/test-helpers/events')
 const { hash } = require('eth-ens-namehash')
 const deployDAO = require('./helpers/deployDAO')
 
-const App = artifacts.require('App.sol')
+const Surgery = artifacts.require('Surgery.sol')
 
 const ANY_ADDRESS = '0xffffffffffffffffffffffffffffffffffffffff'
 
-contract('App', ([appManager, user]) => {
+contract('Surgery', ([appManager, user]) => {
   let app
 
   beforeEach('deploy dao and app', async () => {
     const { dao, acl } = await deployDAO(appManager)
 
     // Deploy the app's base contract.
-    const appBase = await App.new()
+    const appBase = await Surgery.new()
 
     // Instantiate a proxy for the app, using the base contract as its logic implementation.
     const instanceReceipt = await dao.newAppInstance(
@@ -26,7 +26,7 @@ contract('App', ([appManager, user]) => {
       false, // setDefault - Whether the app proxy is the default proxy.
       { from: appManager }
     )
-    app = App.at(
+    app = Surgery.at(
       getEventArgument(instanceReceipt, 'NewAppProxy', 'proxy')
     )
 
@@ -38,15 +38,9 @@ contract('App', ([appManager, user]) => {
     //   appManager, // manager - Can grant/revoke further permissions for this role.
     //   { from: appManager }
     // )
-
-    await app.initialize()
   })
 
   it('app should be deployed', async () => {
     assert.equal(web3.isAddress(app.address), true)
-  })
-
-  it('app should be initialized', async () => {
-    assert.notEqual(await app.getInitializationBlock(), 0)
   })
 })

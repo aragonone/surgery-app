@@ -1,5 +1,5 @@
-var App = artifacts.require('./App.sol')
+var Surgery = artifacts.require('./Surgery.sol')
 
 module.exports = function (deployer) {
-  deployer.deploy(App)
+  deployer.deploy(Surgery)
 }
